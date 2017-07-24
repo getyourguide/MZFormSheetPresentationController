@@ -353,8 +353,11 @@ CGFloat const MZFormSheetPresentationControllerDefaultAboveKeyboardMargin = 20;
     }
     [self.presentedViewController.transitionCoordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
         [UIView animateWithDuration:[context transitionDuration] animations:^{
-            if (![self shouldTransitionBlur])
+            if ([self shouldTransitionBlur]) {
+                self.blurBackgroundView.alpha = 0.0;
+            } else {
                 self.dimmingView.alpha = 0.0;
+            }
         }];
     } completion:nil];
     
