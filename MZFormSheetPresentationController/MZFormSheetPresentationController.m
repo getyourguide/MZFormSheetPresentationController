@@ -204,8 +204,9 @@ CGFloat const MZFormSheetPresentationControllerDefaultAboveKeyboardMargin = 20;
         
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
         if ([UIViewPropertyAnimator class]) {
+            __weak typeof(self) weakSelf = self;
             self.propertyAnimator = [[UIViewPropertyAnimator alloc] initWithDuration:1.0 curve:UIViewAnimationCurveLinear animations:^{
-                self.blurBackgroundView.effect = nil;
+                weakSelf.blurBackgroundView.effect = nil;
             }];
         }
 #endif
